@@ -2970,8 +2970,6 @@ const SENIORITY_OPTS=['C-suite','MD/VP','Director','SVP','Partner','NED'];
 const SIZE_OPTS=['<50','50–250','250–1k','1k–5k','5k–20k','20k+'];
 function scoreColor(s){const n=parseInt(s)||0;return n>=8?'score-high':n>=5?'score-mid':'score-low';}
 const PROSPECT_STAGES=['Not contacted','Researching','Outreach sent','In conversation','Intro arranged','Active process','Parked'];
-const SENIORITY_OPTS=['C-suite','MD/VP','Director','SVP','Partner','NED'];
-const SIZE_OPTS=['<50','50-250','250-1k','1k-5k','5k-20k','20k+'];
 function addProspectRow(data={}){
   const tb=document.getElementById('prospects-tbody');
   const idx=tb.rows.length+1;
