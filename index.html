@@ -2194,7 +2194,7 @@ function renderListView(){
       <td style="cursor:pointer" onclick="openDetail('${oid}')"><span class="tag ${SRC_TAG[o.source]||'tag-cold'}">${SRC_LABELS[o.source]||o.source}</span></td>
       <td><input type="text" value="${esc(currentIntro)}" list="cdl-pipeline"
         style="font-size:12px;padding:4px 7px;border:1px solid var(--b);border-radius:6px;width:120px;background:var(--ww);color:var(--ink);outline:none"
-        onfocus="this.style.borderColor='var(--rust)'"
+        onfocus="refreshPipelineDatalist();this.style.borderColor='var(--rust)'"
         onblur="this.style.borderColor='var(--b)';saveOppIntroducer('${oid}',this.value)"
         placeholder="Introducer&#8230;"/></td>
       <td>${lastOut?`<div class="lt-outbound" style="font-size:12px;cursor:pointer" onclick="openDetail('${oid}')">${ACT_LABELS[lastOut.type]||lastOut.type}</div><div class="lt-action-date">${fmtDate(lastOut.ts)}</div>`:`<span class="lt-none" onclick="openDetail('${oid}')">&#8212;</span>`}</td>
@@ -3016,6 +3016,11 @@ function updateProspectScore(inp,sid){
 function refreshProspectsDatalist(){
   let dl=document.getElementById('cdl-prospects');
   if(!dl){dl=document.createElement('datalist');dl.id='cdl-prospects';document.body.appendChild(dl);}
+  dl.innerHTML=getAllContactsFlat().map(c=>`<option value="${esc(contactDisplayName(c)+(c.company?' ('+c.company+')':''))}">`).join('');
+}
+function refreshPipelineDatalist(){
+  let dl=document.getElementById('cdl-pipeline');
+  if(!dl){dl=document.createElement('datalist');dl.id='cdl-pipeline';document.body.appendChild(dl);}
   dl.innerHTML=getAllContactsFlat().map(c=>`<option value="${esc(contactDisplayName(c)+(c.company?' ('+c.company+')':''))}">`).join('');
 }
 function saveProspects(){
