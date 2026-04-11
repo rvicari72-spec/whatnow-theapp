@@ -472,7 +472,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);m
   width: 100%; max-width: 640px;
   padding: 0 2rem 2rem;
   transform: translateY(100vh);
-  animation: introScroll 18s cubic-bezier(0.15, 0, 0.35, 1) 0.5s forwards;
+  animation: introScroll 22s cubic-bezier(0.1, 0, 0.3, 1) 0.5s forwards;
 }
 #intro-overlay.scrollable #intro-scroll-track {
   transform: none;
@@ -3493,20 +3493,23 @@ function switchView(v) {
 function enableIntroScroll() {
   const ov = document.getElementById('intro-overlay');
   if (!ov || ov.style.display === 'none') return;
-  ov.classList.add('scrollable');
+  ov.style.overflowY = 'auto';
+  ov.style.justifyContent = 'flex-start';
+  ov.style.paddingTop = '10vh';
+  ov.style.paddingBottom = '14rem';
+  const track = document.getElementById('intro-scroll-track');
+  if (track) { track.style.transform = 'none'; track.style.animation = 'none'; }
   ov.querySelectorAll('.intro-line').forEach(el => {
     el.style.opacity = '1';
     el.style.transform = 'none';
     el.style.animation = 'none';
   });
-  const track = document.getElementById('intro-scroll-track');
-  if (track) { track.style.transform = 'none'; track.style.animation = 'none'; }
   const btn = document.getElementById('intro-start-btn');
   if (btn) { btn.style.opacity = '1'; btn.style.animation = 'none'; }
 }
 
 /* Show buttons and enable manual scroll after animation completes (18s + 0.5s delay + 1s buffer) */
-setTimeout(enableIntroScroll, 20000);
+   setTimeout(enableIntroScroll, 23500);
 
 /* ═══════════════════════════════════════════════
    INIT
@@ -3532,7 +3535,7 @@ attachProgressListeners();
     gate.style.display = 'none';
     intro.style.display = 'flex';
     // Enable scroll and show buttons after animation completes
-    setTimeout(enableIntroScroll, 20000);
+   setTimeout(enableIntroScroll, 23500);
   } else {
     // Returning user — straight to app
     intro.style.display = 'none';
