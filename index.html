@@ -481,8 +481,8 @@ body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);m
 
 @keyframes introScroll {
   0%   { transform: translateY(100vh); }
-  90%  { transform: translateY(-5vh); opacity: 1; }
-  100% { transform: translateY(-5vh); opacity: 1; }
+  90%  { transform: translateY(-20vh); opacity: 1; }
+  100% { transform: translateY(-20vh); opacity: 1; }
 }
 
 .intro-line {
@@ -520,7 +520,8 @@ body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);m
   padding: 1.5rem 2rem;
   display: flex; flex-direction: column; align-items: center; gap: 8px;
   background: linear-gradient(to top, #100c08 65%, transparent);
-  opacity: 1;
+  opacity: 0;
+  transition: opacity 1.2s ease;
   z-index: 10000;
 }
 #intro-overlay.scrollable #intro-start-btn {
